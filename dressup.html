@@ -1,0 +1,1233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Dressup">
+    <title>dressup</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://www.youtube.com/iframe_api"></script>
+</head>
+<body>
+    <div class="scrolling-header">
+        <div class="scrolling-text-wrapper">
+            <div class="scrolling-text" id="scrolling-text">
+                welcome to hyoh's dress up game! now playing: customize by xploshi
+            </div>
+            <div class="scrolling-text" id="scrolling-text-duplicate" aria-hidden="true">
+                welcome to hyoh's dress up game! now playing: customize by xploshi
+            </div>
+            <div class="scrolling-text" id="scrolling-text-triplicate" aria-hidden="true">
+                welcome to hyoh's dress up game! now playing: customize by xploshi
+            </div>
+            <div class="scrolling-text" id="scrolling-text-quadruplicate" aria-hidden="true">
+                welcome to hyoh's dress up game! now playing: customize by xploshi
+            </div>
+        </div>
+    </div>
+    <div class="button-container">
+        <button id="reset-btn" class="reset-button">Reset</button>
+        <button id="save-btn" class="save-button">Save</button>
+        <button id="gallery-btn" class="gallery-button">Gallery</button>
+    </div>
+    <!-- Hidden YouTube player for audio only -->
+    <div id="youtube-player-container"></div>
+    <main class="main-container">
+        <div class="clothing-panel clothing-panel-left">
+            <div class="category-section">
+                <div class="category-title">Eyes</div>
+                <div class="thumbnail-carousel" id="eyes-carousel">
+                    <button class="carousel-arrow carousel-arrow-left" id="eyes-arrow-left">‹</button>
+                    <div class="thumbnail-carousel-container">
+                        <div class="thumbnail-btn" data-category="eyes" data-item="data/eyes-1.png">
+                            <button class="thumbnail-remove-btn">×</button>
+                            <img src="data/thumbnail-eyes1.png" alt="Eyes 1">
+                        </div>
+                        <div class="thumbnail-btn" data-category="eyes" data-item="data/eyes-2.png">
+                            <button class="thumbnail-remove-btn">×</button>
+                            <img src="data/thumbnail-eyes2.png" alt="Eyes 2">
+                        </div>
+                        <div class="thumbnail-btn" data-category="eyes" data-item="data/eyes-3.png">
+                            <button class="thumbnail-remove-btn">×</button>
+                            <img src="data/thumbnail-eyes3.png" alt="Eyes 3">
+                        </div>
+                        <div class="thumbnail-btn" data-category="eyes" data-item="data/eyes-4.png">
+                            <button class="thumbnail-remove-btn">×</button>
+                            <img src="data/thumbnail-eyes4.png" alt="Eyes 4">
+                        </div>
+                        <div class="thumbnail-btn" data-category="eyes" data-item="data/eyes-5.png">
+                            <button class="thumbnail-remove-btn">×</button>
+                            <img src="data/thumbnail-eyes5.png" alt="Eyes 5">
+                        </div>
+                    </div>
+                    <button class="carousel-arrow carousel-arrow-right" id="eyes-arrow-right">›</button>
+                </div>
+            </div>
+            <div class="category-section">
+                <div class="category-title">Mouth</div>
+                <div class="thumbnail-carousel" id="mouth-carousel">
+                    <button class="carousel-arrow carousel-arrow-left" id="mouth-arrow-left">‹</button>
+                    <div class="thumbnail-carousel-container">
+                        <div class="thumbnail-btn" data-category="mouth" data-item="data/mouth-1.png">
+                            <button class="thumbnail-remove-btn">×</button>
+                            <img src="data/thumbnail-mouth1.png" alt="Mouth 1">
+                        </div>
+                        <div class="thumbnail-btn" data-category="mouth" data-item="data/mouth-2.png">
+                            <button class="thumbnail-remove-btn">×</button>
+                            <img src="data/thumbnail-mouth2.png" alt="Mouth 2">
+                        </div>
+                        <div class="thumbnail-btn" data-category="mouth" data-item="data/mouth-3.png">
+                            <button class="thumbnail-remove-btn">×</button>
+                            <img src="data/thumbnail-mouth3.png" alt="Mouth 3">
+                        </div>
+                        <div class="thumbnail-btn" data-category="mouth" data-item="data/mouth-4.png">
+                            <button class="thumbnail-remove-btn">×</button>
+                            <img src="data/thumbnail-mouth4.png" alt="Mouth 4">
+                        </div>
+                        <div class="thumbnail-btn" data-category="mouth" data-item="data/mouth-5.png">
+                            <button class="thumbnail-remove-btn">×</button>
+                            <img src="data/thumbnail-mouth5.png" alt="Mouth 5">
+                        </div>
+                        <div class="thumbnail-btn" data-category="mouth" data-item="data/mouth-6.png">
+                            <button class="thumbnail-remove-btn">×</button>
+                            <img src="data/thumbnail-mouth6.png" alt="Mouth 6">
+                        </div>
+                    </div>
+                    <button class="carousel-arrow carousel-arrow-right" id="mouth-arrow-right">›</button>
+                </div>
+            </div>
+            <div class="category-section">
+                <div class="category-title">Piercings</div>
+                <div class="thumbnail-carousel" id="piercings-carousel">
+                    <button class="carousel-arrow carousel-arrow-left" id="piercings-arrow-left">‹</button>
+                    <div class="thumbnail-carousel-container">
+                        <div class="thumbnail-btn" data-category="piercings" data-item="data/piercing-1.png">
+                            <button class="thumbnail-remove-btn">×</button>
+                            <img src="data/thumbnail-piercing1.png" alt="Piercing 1">
+                        </div>
+                        <div class="thumbnail-btn" data-category="piercings" data-item="data/piercing-2.png">
+                            <button class="thumbnail-remove-btn">×</button>
+                            <img src="data/thumbnail-piercing2.png" alt="Piercing 2">
+                        </div>
+                        <div class="thumbnail-btn" data-category="piercings" data-item="data/piercing-3.png">
+                            <button class="thumbnail-remove-btn">×</button>
+                            <img src="data/thumbnail-piercing3.png" alt="Piercing 3">
+                        </div>
+                        <div class="thumbnail-btn" data-category="piercings" data-item="data/piercing-4.png">
+                            <button class="thumbnail-remove-btn">×</button>
+                            <img src="data/thumbnail-piercing4.png" alt="Piercing 4">
+                        </div>
+                        <div class="thumbnail-btn" data-category="piercings" data-item="data/piercing-5.png">
+                            <button class="thumbnail-remove-btn">×</button>
+                            <img src="data/thumbnail-piercing5.png" alt="Piercing 5">
+                        </div>
+                        <div class="thumbnail-btn" data-category="piercings" data-item="data/piercing-6.png">
+                            <button class="thumbnail-remove-btn">×</button>
+                            <img src="data/thumbnail-piercing6.png" alt="Piercing 6">
+                        </div>
+                    </div>
+                    <button class="carousel-arrow carousel-arrow-right" id="piercings-arrow-right">›</button>
+                </div>
+            </div>
+            <div class="category-section">
+                <div class="category-title">Bangs</div>
+                <div class="thumbnail-carousel" id="bangs-carousel">
+                    <button class="carousel-arrow carousel-arrow-left" id="bangs-arrow-left">‹</button>
+                    <div class="thumbnail-carousel-container">
+                        <div class="thumbnail-btn" data-category="bangs" data-item="data/bangs-1.png">
+                            <button class="thumbnail-remove-btn">×</button>
+                            <img src="data/thumbnail-bangs1.png" alt="Bangs 1">
+                        </div>
+                        <div class="thumbnail-btn" data-category="bangs" data-item="data/bangs-2.png">
+                            <button class="thumbnail-remove-btn">×</button>
+                            <img src="data/thumbnail-bangs2.png" alt="Bangs 2">
+                        </div>
+                        <div class="thumbnail-btn" data-category="bangs" data-item="data/bangs-3.png">
+                            <button class="thumbnail-remove-btn">×</button>
+                            <img src="data/thumbnail-bangs3.png" alt="Bangs 3">
+                        </div>
+                        <div class="thumbnail-btn" data-category="bangs" data-item="data/bangs-4.png">
+                            <button class="thumbnail-remove-btn">×</button>
+                            <img src="data/thumbnail-bangs4.png" alt="Bangs 4">
+                        </div>
+                    </div>
+                    <button class="carousel-arrow carousel-arrow-right" id="bangs-arrow-right">›</button>
+                </div>
+            </div>
+            <div class="category-section">
+                <div class="category-title">Hair</div>
+                <div class="thumbnail-carousel" id="hair-carousel">
+                    <button class="carousel-arrow carousel-arrow-left" id="hair-arrow-left">‹</button>
+                    <div class="thumbnail-carousel-container">
+                        <div class="thumbnail-btn" data-category="hair" data-item="data/hair-1.png">
+                            <button class="thumbnail-remove-btn">×</button>
+                            <img src="data/thumbnail-hair1.png" alt="Hair 1">
+                        </div>
+                        <div class="thumbnail-btn" data-category="hair" data-item="data/hair-2.png">
+                            <button class="thumbnail-remove-btn">×</button>
+                            <img src="data/thumbnail-hair2.png" alt="Hair 2">
+                        </div>
+                        <div class="thumbnail-btn" data-category="hair" data-item="data/hair-3.png">
+                            <button class="thumbnail-remove-btn">×</button>
+                            <img src="data/thumbnail-hair3.png" alt="Hair 3">
+                        </div>
+                        <div class="thumbnail-btn" data-category="hair" data-item="data/hair-4.png">
+                            <button class="thumbnail-remove-btn">×</button>
+                            <img src="data/thumbnail-hair4.png" alt="Hair 4">
+                        </div>
+                        <div class="thumbnail-btn" data-category="hair" data-item="data/hair-5.png">
+                            <button class="thumbnail-remove-btn">×</button>
+                            <img src="data/thumbnail-hair5.png" alt="Hair 5">
+                        </div>
+                    </div>
+                    <button class="carousel-arrow carousel-arrow-right" id="hair-arrow-right">›</button>
+                </div>
+            </div>
+            <div class="category-section">
+                <div class="category-title">Accessories</div>
+                <div class="thumbnail-carousel" id="accessories-carousel">
+                    <button class="carousel-arrow carousel-arrow-left" id="accessories-arrow-left">‹</button>
+                    <div class="thumbnail-carousel-container">
+                        <div class="thumbnail-btn" data-category="accessories" data-item="data/accessories-bandage.png">
+                            <button class="thumbnail-remove-btn">×</button>
+                            <img src="data/thumbnail-accbandage.png" alt="Bandage">
+                        </div>
+                        <div class="thumbnail-btn" data-category="accessories" data-item="data/accessories-bandages.png">
+                            <button class="thumbnail-remove-btn">×</button>
+                            <img src="data/thumbnail-accbandages.png" alt="Bandages">
+                        </div>
+                        <div class="thumbnail-btn" data-category="accessories" data-item="data/accessories-BM1.png">
+                            <button class="thumbnail-remove-btn">×</button>
+                            <img src="data/thumbnail-accBM1.png" alt="BM1">
+                        </div>
+                        <div class="thumbnail-btn" data-category="accessories" data-item="data/accessories-BM2.png">
+                            <button class="thumbnail-remove-btn">×</button>
+                            <img src="data/thumbnail-accBM2.png" alt="BM2">
+                        </div>
+                        <div class="thumbnail-btn" data-category="accessories" data-item="data/accessories-BM3.png">
+                            <button class="thumbnail-remove-btn">×</button>
+                            <img src="data/thumbnail-accBM3.png" alt="BM3">
+                        </div>
+                        <div class="thumbnail-btn" data-category="accessories" data-item="data/accessories-earphones.png">
+                            <button class="thumbnail-remove-btn">×</button>
+                            <img src="data/thumbnail-accearphones.png" alt="Earphones">
+                        </div>
+                        <div class="thumbnail-btn" data-category="accessories" data-item="data/accessories-eyepatch.png">
+                            <button class="thumbnail-remove-btn">×</button>
+                            <img src="data/accessories-eyepatch.png" alt="Eyepatch">
+                        </div>
+                        <div class="thumbnail-btn" data-category="accessories" data-item="data/accessories-gloves1.png">
+                            <button class="thumbnail-remove-btn">×</button>
+                            <img src="data/thumbnail-accgloves1.png" alt="Gloves 1">
+                        </div>
+                        <div class="thumbnail-btn" data-category="accessories" data-item="data/accessories-gloves2.png">
+                            <button class="thumbnail-remove-btn">×</button>
+                            <img src="data/thumbnail-accgloves2.png" alt="Gloves 2">
+                        </div>
+                        <div class="thumbnail-btn" data-category="accessories" data-item="data/accessories-gloves3.png">
+                            <button class="thumbnail-remove-btn">×</button>
+                            <img src="data/thumbnail-accgloves3.png" alt="Gloves 3">
+                        </div>
+                        <div class="thumbnail-btn" data-category="accessories" data-item="data/accessories-kopi.png">
+                            <button class="thumbnail-remove-btn">×</button>
+                            <img src="data/thumbnail-acckopi.png" alt="Kopi">
+                        </div>
+                        <div class="thumbnail-btn" data-category="accessories" data-item="data/accessories-scar1.png">
+                            <button class="thumbnail-remove-btn">×</button>
+                            <img src="data/thumbnail-accscar1.png" alt="Scar 1">
+                        </div>
+                        <div class="thumbnail-btn" data-category="accessories" data-item="data/accessories-scar2.png">
+                            <button class="thumbnail-remove-btn">×</button>
+                            <img src="data/thumbnail-accscar2.png" alt="Scar 2">
+                        </div>
+                        <div class="thumbnail-btn" data-category="accessories" data-item="data/accessories-scarf.png">
+                            <button class="thumbnail-remove-btn">×</button>
+                            <img src="data/thumbnail-accscarf.png" alt="Scarf">
+                        </div>
+                        <div class="thumbnail-btn" data-category="accessories" data-item="data/accessories-sunglasses.png">
+                            <button class="thumbnail-remove-btn">×</button>
+                            <img src="data/thumbnail-accsunglasses.png" alt="Sunglasses">
+                        </div>
+                    </div>
+                    <button class="carousel-arrow carousel-arrow-right" id="accessories-arrow-right">›</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="clothing-panel clothing-panel-right">
+            <div class="category-section">
+                <div class="category-title">Headwear</div>
+                <div class="thumbnail-carousel" id="headwear-carousel">
+                    <button class="carousel-arrow carousel-arrow-left" id="headwear-arrow-left">‹</button>
+                    <div class="thumbnail-carousel-container">
+                        <div class="thumbnail-btn" data-category="headwear" data-item="data/headwear-1.png">
+                            <button class="thumbnail-remove-btn">×</button>
+                            <img src="data/thumbnail-headwear1.png" alt="Headwear 1">
+                        </div>
+                        <div class="thumbnail-btn" data-category="headwear" data-item="data/headwear-2.png">
+                            <button class="thumbnail-remove-btn">×</button>
+                            <img src="data/thumbnail-headwear2.png" alt="Headwear 2">
+                        </div>
+                        <div class="thumbnail-btn" data-category="headwear" data-item="data/headwear-3.png">
+                            <button class="thumbnail-remove-btn">×</button>
+                            <img src="data/thumbnail-headwear3.png" alt="Headwear 3">
+                        </div>
+                        <div class="thumbnail-btn" data-category="headwear" data-item="data/headwear-4.png">
+                            <button class="thumbnail-remove-btn">×</button>
+                            <img src="data/thumbnail-headwear4.png" alt="Headwear 4">
+                        </div>
+                        <div class="thumbnail-btn" data-category="headwear" data-item="data/headwear-5.png">
+                            <button class="thumbnail-remove-btn">×</button>
+                            <img src="data/thumbnail-headwear5.png" alt="Headwear 5">
+                        </div>
+                        <div class="thumbnail-btn" data-category="headwear" data-item="data/headwear-6.png">
+                            <button class="thumbnail-remove-btn">×</button>
+                            <img src="data/thumbnail-headwear6.png" alt="Headwear 6">
+                        </div>
+                    </div>
+                    <button class="carousel-arrow carousel-arrow-right" id="headwear-arrow-right">›</button>
+                </div>
+            </div>
+            <div class="category-section">
+                <div class="category-title">Tops</div>
+                <div class="thumbnail-carousel" id="tops-carousel">
+                    <button class="carousel-arrow carousel-arrow-left" id="tops-arrow-left">‹</button>
+                    <div class="thumbnail-carousel-container">
+                        <div class="thumbnail-btn" data-category="top" data-item="data/top-1.png">
+                            <button class="thumbnail-remove-btn">×</button>
+                            <img src="data/thumbnail-top1.png" alt="Top 1">
+                        </div>
+                        <div class="thumbnail-btn" data-category="top" data-item="data/top-2.png">
+                            <button class="thumbnail-remove-btn">×</button>
+                            <img src="data/thumbnail-top2.png" alt="Top 2">
+                        </div>
+                        <div class="thumbnail-btn" data-category="top" data-item="data/top-3.png">
+                            <button class="thumbnail-remove-btn">×</button>
+                            <img src="data/thumbnail-top3.png" alt="Top 3">
+                        </div>
+                        <div class="thumbnail-btn" data-category="top" data-item="data/top-4.png">
+                            <button class="thumbnail-remove-btn">×</button>
+                            <img src="data/thumbnail-top4.png" alt="Top 4">
+                        </div>
+                        <div class="thumbnail-btn" data-category="top" data-item="data/top-5.png">
+                            <button class="thumbnail-remove-btn">×</button>
+                            <img src="data/thumbnail-top5.png" alt="Top 5">
+                        </div>
+                        <div class="thumbnail-btn" data-category="top" data-item="data/top-6.png">
+                            <button class="thumbnail-remove-btn">×</button>
+                            <img src="data/thumbnail-top6.png" alt="Top 6">
+                        </div>
+                        <div class="thumbnail-btn" data-category="top" data-item="data/top-7.png">
+                            <button class="thumbnail-remove-btn">×</button>
+                            <img src="data/thumbnail-top7.png" alt="Top 7">
+                        </div>
+                        <div class="thumbnail-btn" data-category="top" data-item="data/top-8.png">
+                            <button class="thumbnail-remove-btn">×</button>
+                            <img src="data/thumbnail-top8.png" alt="Top 8">
+                        </div>
+                        <div class="thumbnail-btn" data-category="top" data-item="data/top-9.png">
+                            <button class="thumbnail-remove-btn">×</button>
+                            <img src="data/thumbnail-top9.png" alt="Top 9">
+                        </div>
+                        <div class="thumbnail-btn" data-category="top" data-item="data/top-10.png">
+                            <button class="thumbnail-remove-btn">×</button>
+                            <img src="data/thumbnail-top10.png" alt="Top 10">
+                        </div>
+                        <div class="thumbnail-btn" data-category="top" data-item="data/top-11.png">
+                            <button class="thumbnail-remove-btn">×</button>
+                            <img src="data/thumbnail-top11.png" alt="Top 11">
+                        </div>
+                        <div class="thumbnail-btn" data-category="top" data-item="data/top-bra.png">
+                            <button class="thumbnail-remove-btn">×</button>
+                            <img src="data/thumbnail-topbra.png" alt="Bra">
+                        </div>
+                    </div>
+                    <button class="carousel-arrow carousel-arrow-right" id="tops-arrow-right">›</button>
+                </div>
+            </div>
+            <div class="category-section">
+                <div class="category-title">Bottoms</div>
+                <div class="thumbnail-carousel" id="bottoms-carousel">
+                    <button class="carousel-arrow carousel-arrow-left" id="bottoms-arrow-left">‹</button>
+                    <div class="thumbnail-carousel-container">
+                        <div class="thumbnail-btn" data-category="bottom" data-item="data/bottom-pants1.png">
+                            <button class="thumbnail-remove-btn">×</button>
+                            <img src="data/thumbnail-bottompants1.png" alt="Pants 1">
+                        </div>
+                        <div class="thumbnail-btn" data-category="bottom" data-item="data/bottom-pants2.png">
+                            <button class="thumbnail-remove-btn">×</button>
+                            <img src="data/thumbnail-bottompants2.png" alt="Pants 2">
+                        </div>
+                        <div class="thumbnail-btn" data-category="bottom" data-item="data/bottom-pants3.png">
+                            <button class="thumbnail-remove-btn">×</button>
+                            <img src="data/thumbnail-bottompants3.png" alt="Pants 3">
+                        </div>
+                        <div class="thumbnail-btn" data-category="bottom" data-item="data/bottom-pants4.png">
+                            <button class="thumbnail-remove-btn">×</button>
+                            <img src="data/thumbnail-bottompants4.png" alt="Pants 4">
+                        </div>
+                        <div class="thumbnail-btn" data-category="bottom" data-item="data/bottom-pants5.png">
+                            <button class="thumbnail-remove-btn">×</button>
+                            <img src="data/thumbnail-bottompants5.png" alt="Pants 5">
+                        </div>
+                        <div class="thumbnail-btn" data-category="bottom" data-item="data/bottom-pants6.png">
+                            <button class="thumbnail-remove-btn">×</button>
+                            <img src="data/thumbnail-bottompants6.png" alt="Pants 6">
+                        </div>
+                        <div class="thumbnail-btn" data-category="bottom" data-item="data/bottom-pants7.png">
+                            <button class="thumbnail-remove-btn">×</button>
+                            <img src="data/thumbnail-bottompants7.png" alt="Pants 7">
+                        </div>
+                        <div class="thumbnail-btn" data-category="bottom" data-item="data/bottom-pants8.png">
+                            <button class="thumbnail-remove-btn">×</button>
+                            <img src="data/thumbnail-bottompants8.png" alt="Pants 8">
+                        </div>
+                        <div class="thumbnail-btn" data-category="bottom" data-item="data/bottom-pants9.png">
+                            <button class="thumbnail-remove-btn">×</button>
+                            <img src="data/thumbnail-bottompants9.png" alt="Pants 9">
+                        </div>
+                        <div class="thumbnail-btn" data-category="bottom" data-item="data/bottom-skirt1.png">
+                            <button class="thumbnail-remove-btn">×</button>
+                            <img src="data/thumbnail-bottomskirt1.png" alt="Skirt 1">
+                        </div>
+                        <div class="thumbnail-btn" data-category="bottom" data-item="data/bottom-skirt2.png">
+                            <button class="thumbnail-remove-btn">×</button>
+                            <img src="data/thumbnail-bottomskirt2.png" alt="Skirt 2">
+                        </div>
+                    </div>
+                    <button class="carousel-arrow carousel-arrow-right" id="bottoms-arrow-right">›</button>
+                </div>
+            </div>
+            <div class="category-section">
+                <div class="category-title">Outer</div>
+                <div class="thumbnail-carousel" id="outer-carousel">
+                    <button class="carousel-arrow carousel-arrow-left" id="outer-arrow-left">‹</button>
+                    <div class="thumbnail-carousel-container">
+                        <div class="thumbnail-btn" data-category="outer" data-item="data/outer-1.png">
+                            <button class="thumbnail-remove-btn">×</button>
+                            <img src="data/thumbnail-outer1.png" alt="Outer 1">
+                        </div>
+                        <div class="thumbnail-btn" data-category="outer" data-item="data/outer-2.png">
+                            <button class="thumbnail-remove-btn">×</button>
+                            <img src="data/thumbnail-outer2.png" alt="Outer 2">
+                        </div>
+                        <div class="thumbnail-btn" data-category="outer" data-item="data/outer-3.png">
+                            <button class="thumbnail-remove-btn">×</button>
+                            <img src="data/thumbnail-outer3.png" alt="Outer 3">
+                        </div>
+                        <div class="thumbnail-btn" data-category="outer" data-item="data/outer-4.png">
+                            <button class="thumbnail-remove-btn">×</button>
+                            <img src="data/thumbnail-outer4.png" alt="Outer 4">
+                        </div>
+                        <div class="thumbnail-btn" data-category="outer" data-item="data/outer-5.png">
+                            <button class="thumbnail-remove-btn">×</button>
+                            <img src="data/thumbnail-outer5.png" alt="Outer 5">
+                        </div>
+                        <div class="thumbnail-btn" data-category="outer" data-item="data/outer-6.png">
+                            <button class="thumbnail-remove-btn">×</button>
+                            <img src="data/thumbnail-outer6.png" alt="Outer 6">
+                        </div>
+                        <div class="thumbnail-btn" data-category="outer" data-item="data/outer-7.png">
+                            <button class="thumbnail-remove-btn">×</button>
+                            <img src="data/thumbnail-outer7.png" alt="Outer 7">
+                        </div>
+                        <div class="thumbnail-btn" data-category="outer" data-item="data/outer-8.png">
+                            <button class="thumbnail-remove-btn">×</button>
+                            <img src="data/thumbnail-outer8.png" alt="Outer 8">
+                        </div>
+                        <div class="thumbnail-btn" data-category="outer" data-item="data/outer-9.png">
+                            <button class="thumbnail-remove-btn">×</button>
+                            <img src="data/thumbnail-outer9.png" alt="Outer 9">
+                        </div>
+                    </div>
+                    <button class="carousel-arrow carousel-arrow-right" id="outer-arrow-right">›</button>
+                </div>
+            </div>
+            <div class="category-section">
+                <div class="category-title">Underwear</div>
+                <div class="thumbnail-carousel" id="underwear-carousel">
+                    <button class="carousel-arrow carousel-arrow-left" id="underwear-arrow-left">‹</button>
+                    <div class="thumbnail-carousel-container">
+                        <div class="thumbnail-btn" data-category="underwear" data-item="data/underwear-socks1.png">
+                            <button class="thumbnail-remove-btn">×</button>
+                            <img src="data/thumbnail-undersocks1.png" alt="Underwear Socks 1">
+                        </div>
+                        <div class="thumbnail-btn" data-category="underwear" data-item="data/underwear-socks2.png">
+                            <button class="thumbnail-remove-btn">×</button>
+                            <img src="data/thumbnail-undersocks2.png" alt="Underwear Socks 2">
+                        </div>
+                        <div class="thumbnail-btn" data-category="underwear" data-item="data/underwear-socks3.png">
+                            <button class="thumbnail-remove-btn">×</button>
+                            <img src="data/thumbnail-undersocks3.png" alt="Underwear Socks 3">
+                        </div>
+                        <div class="thumbnail-btn" data-category="underwear" data-item="data/underwear-socks4.png">
+                            <button class="thumbnail-remove-btn">×</button>
+                            <img src="data/thumbnail-undersocks4.png" alt="Underwear Socks 4">
+                        </div>
+                        <div class="thumbnail-btn" data-category="underwear" data-item="data/underwear-stocking1.png">
+                            <button class="thumbnail-remove-btn">×</button>
+                            <img src="data/thumbnail-understocking1.png" alt="Underwear Stocking 1">
+                        </div>
+                        <div class="thumbnail-btn" data-category="underwear" data-item="data/underwear-stocking2.png">
+                            <button class="thumbnail-remove-btn">×</button>
+                            <img src="data/thumbnail-understocking2.png" alt="Underwear Stocking 2">
+                        </div>
+                        <div class="thumbnail-btn" data-category="underwear" data-item="data/underwear-stocking3.png">
+                            <button class="thumbnail-remove-btn">×</button>
+                            <img src="data/thumbnail-understocking3.png" alt="Underwear Stocking 3">
+                        </div>
+                    </div>
+                    <button class="carousel-arrow carousel-arrow-right" id="underwear-arrow-right">›</button>
+                </div>
+            </div>
+            <div class="category-section">
+                <div class="category-title">Shoes</div>
+                <div class="thumbnail-carousel" id="shoes-carousel">
+                    <button class="carousel-arrow carousel-arrow-left" id="shoes-arrow-left">‹</button>
+                    <div class="thumbnail-carousel-container">
+                        <div class="thumbnail-btn" data-category="shoes" data-item="data/shoes-1.png">
+                            <button class="thumbnail-remove-btn">×</button>
+                            <img src="data/thumbnail-shoes1.png" alt="Shoes 1">
+                        </div>
+                        <div class="thumbnail-btn" data-category="shoes" data-item="data/shoes-2.png">
+                            <button class="thumbnail-remove-btn">×</button>
+                            <img src="data/thumbnail-shoes2.png" alt="Shoes 2">
+                        </div>
+                        <div class="thumbnail-btn" data-category="shoes" data-item="data/shoes-3.png">
+                            <button class="thumbnail-remove-btn">×</button>
+                            <img src="data/thumbnail-shoes3.png" alt="Shoes 3">
+                        </div>
+                        <div class="thumbnail-btn" data-category="shoes" data-item="data/shoes-4.png">
+                            <button class="thumbnail-remove-btn">×</button>
+                            <img src="data/thumbnail-shoes4.png" alt="Shoes 4">
+                        </div>
+                        <div class="thumbnail-btn" data-category="shoes" data-item="data/shoes-5.png">
+                            <button class="thumbnail-remove-btn">×</button>
+                            <img src="data/thumbnail-shoes5.png" alt="Shoes 5">
+                        </div>
+                        <div class="thumbnail-btn" data-category="shoes" data-item="data/shoes-6.png">
+                            <button class="thumbnail-remove-btn">×</button>
+                            <img src="data/thumbnail-shoes6.png" alt="Shoes 6">
+                        </div>
+                        <div class="thumbnail-btn" data-category="shoes" data-item="data/shoes-7.png">
+                            <button class="thumbnail-remove-btn">×</button>
+                            <img src="data/thumbnail-shoes7.png" alt="Shoes 7">
+                        </div>
+                    </div>
+                    <button class="carousel-arrow carousel-arrow-right" id="shoes-arrow-right">›</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="character-container">
+            <img src="data/body.png" alt="Body" class="body-layer" id="body-base" draggable="false">
+            <img src="" alt="Hair" class="character-layer" id="hair-layer" style="display: none;" draggable="false">
+            <img src="" alt="Bangs" class="character-layer" id="bangs-layer" style="display: none;" draggable="false">
+            <img src="" alt="Eyes" class="character-layer" id="eyes-layer" style="display: none;" draggable="false">
+            <img src="" alt="Mouth" class="character-layer" id="mouth-layer" style="display: none;" draggable="false">
+            <img src="" alt="Headwear" class="character-layer" id="headwear-layer" style="display: none;" draggable="false">
+            <img src="" alt="Piercings" class="character-layer piercings-layer-instance" style="display: none;" draggable="false">
+            <img src="" alt="Piercings" class="character-layer piercings-layer-instance" style="display: none;" draggable="false">
+            <img src="" alt="Piercings" class="character-layer piercings-layer-instance" style="display: none;" draggable="false">
+            <img src="" alt="Piercings" class="character-layer piercings-layer-instance" style="display: none;" draggable="false">
+            <img src="" alt="Piercings" class="character-layer piercings-layer-instance" style="display: none;" draggable="false">
+            <img src="" alt="Piercings" class="character-layer piercings-layer-instance" style="display: none;" draggable="false">
+            <img src="" alt="Piercings" class="character-layer piercings-layer-instance" style="display: none;" draggable="false">
+            <img src="" alt="Piercings" class="character-layer piercings-layer-instance" style="display: none;" draggable="false">
+            <img src="" alt="Piercings" class="character-layer piercings-layer-instance" style="display: none;" draggable="false">
+            <img src="" alt="Piercings" class="character-layer piercings-layer-instance" style="display: none;" draggable="false">
+            <img src="" alt="Accessories" class="character-layer accessories-layer-instance" style="display: none;" draggable="false">
+            <img src="" alt="Accessories" class="character-layer accessories-layer-instance" style="display: none;" draggable="false">
+            <img src="" alt="Accessories" class="character-layer accessories-layer-instance" style="display: none;" draggable="false">
+            <img src="" alt="Accessories" class="character-layer accessories-layer-instance" style="display: none;" draggable="false">
+            <img src="" alt="Accessories" class="character-layer accessories-layer-instance" style="display: none;" draggable="false">
+            <img src="" alt="Accessories" class="character-layer accessories-layer-instance" style="display: none;" draggable="false">
+            <img src="" alt="Accessories" class="character-layer accessories-layer-instance" style="display: none;" draggable="false">
+            <img src="" alt="Accessories" class="character-layer accessories-layer-instance" style="display: none;" draggable="false">
+            <img src="" alt="Accessories" class="character-layer accessories-layer-instance" style="display: none;" draggable="false">
+            <img src="" alt="Accessories" class="character-layer accessories-layer-instance" style="display: none;" draggable="false">
+            <img src="" alt="Underwear" class="character-layer" id="underwear-layer" style="display: none;" draggable="false">
+            <img src="" alt="Top" class="character-layer" id="top-layer" style="display: none;" draggable="false">
+            <img src="" alt="Bottom" class="character-layer" id="bottom-layer" style="display: none;" draggable="false">
+            <img src="" alt="Outer" class="character-layer" id="outer-layer" style="display: none;" draggable="false">
+            <img src="" alt="Shoes" class="character-layer" id="shoes-layer" style="display: none;" draggable="false">
+        </div>
+    </main>
+    <script src="script.js"></script>
+    <script>
+        // Dressup functionality
+        const hairLayer = document.getElementById('hair-layer');
+        const bangsLayer = document.getElementById('bangs-layer');
+        const eyesLayer = document.getElementById('eyes-layer');
+        const mouthLayer = document.getElementById('mouth-layer');
+        const headwearLayer = document.getElementById('headwear-layer');
+        // Get all piercing and accessory layer instances
+        const piercingsLayers = Array.from(document.querySelectorAll('.piercings-layer-instance'));
+        const accessoriesLayers = Array.from(document.querySelectorAll('.accessories-layer-instance'));
+        const underwearLayer = document.getElementById('underwear-layer');
+        const topLayer = document.getElementById('top-layer');
+        const bottomLayer = document.getElementById('bottom-layer');
+        const outerLayer = document.getElementById('outer-layer');
+        const shoesLayer = document.getElementById('shoes-layer');
+        
+        
+        // Current items
+        let currentHair = null;
+        let currentBangs = null;
+        let currentEyes = null;
+        let currentMouth = null;
+        let currentHeadwear = null;
+        // Track multiple piercings and accessories
+        let activePiercings = []; // Array of {layer, itemSrc}
+        let activeAccessories = []; // Array of {layer, itemSrc}
+        let currentUnderwear = null;
+        let currentTop = null;
+        let currentBottom = null;
+        let currentOuter = null;
+        let currentShoes = null;
+        
+        // Z-index tracking - start with base values
+        let maxZIndex = 20; // Start higher than initial z-indexes
+        
+        // Function to bring layer to front (all layers can be adjusted)
+        function bringToFront(layer) {
+            maxZIndex += 1;
+            layer.style.zIndex = maxZIndex;
+        }
+        
+        // Function to update thumbnail selection (for single-select categories)
+        function updateThumbnailSelection(category, itemSrc) {
+            // Skip multi-select categories
+            if (category === 'piercings' || category === 'accessories') {
+                return;
+            }
+            
+            // Remove selected class from all thumbnails in this category
+            document.querySelectorAll(`.thumbnail-btn[data-category="${category}"]`).forEach(btn => {
+                btn.classList.remove('selected');
+            });
+            
+            // Add selected class to the clicked thumbnail
+            if (itemSrc) {
+                const selectedBtn = document.querySelector(`.thumbnail-btn[data-category="${category}"][data-item="${itemSrc}"]`);
+                if (selectedBtn) {
+                    selectedBtn.classList.add('selected');
+                }
+            }
+        }
+        
+        // Function to update thumbnail selection for multi-select categories (piercings and accessories)
+        function updateMultiSelectThumbnailSelection(category) {
+            let activeArray;
+            if (category === 'piercings') {
+                activeArray = activePiercings;
+            } else if (category === 'accessories') {
+                activeArray = activeAccessories;
+            } else {
+                return;
+            }
+            
+            // Get all active item sources
+            const activeItemSrcs = activeArray.map(item => item.itemSrc);
+            
+            // Update all thumbnails in this category
+            document.querySelectorAll(`.thumbnail-btn[data-category="${category}"]`).forEach(btn => {
+                const itemSrc = btn.getAttribute('data-item');
+                if (activeItemSrcs.includes(itemSrc)) {
+                    btn.classList.add('selected');
+                } else {
+                    btn.classList.remove('selected');
+                }
+            });
+        }
+        
+        
+        // Function to apply item to layer
+        function applyItem(category, itemSrc) {
+            // Handle multi-select categories (piercings and accessories)
+            if (category === 'piercings') {
+                if (!itemSrc) return;
+                
+                // Find first available layer
+                const availableLayer = piercingsLayers.find(layer => layer.style.display === 'none' || !layer.src);
+                
+                if (!availableLayer) {
+                    alert('Maximum number of piercings reached!');
+                    return;
+                }
+                
+                // Apply item to layer
+                availableLayer.src = itemSrc;
+                availableLayer.style.display = 'block';
+                bringToFront(availableLayer);
+                
+                // Add to active array
+                activePiercings.push({layer: availableLayer, itemSrc: itemSrc});
+                
+                // Update thumbnail selection
+                updateMultiSelectThumbnailSelection(category);
+                return;
+            }
+            
+            if (category === 'accessories') {
+                if (!itemSrc) return;
+                
+                // Find first available layer
+                const availableLayer = accessoriesLayers.find(layer => layer.style.display === 'none' || !layer.src);
+                
+                if (!availableLayer) {
+                    alert('Maximum number of accessories reached!');
+                    return;
+                }
+                
+                // Apply item to layer
+                availableLayer.src = itemSrc;
+                availableLayer.style.display = 'block';
+                bringToFront(availableLayer);
+                
+                // Add to active array
+                activeAccessories.push({layer: availableLayer, itemSrc: itemSrc});
+                
+                // Update thumbnail selection
+                updateMultiSelectThumbnailSelection(category);
+                return;
+            }
+            
+            // Handle single-select categories
+            let layer, currentItem;
+            
+            switch(category) {
+                case 'hair':
+                    layer = hairLayer;
+                    currentItem = currentHair;
+                    break;
+                case 'bangs':
+                    layer = bangsLayer;
+                    currentItem = currentBangs;
+                    break;
+                case 'eyes':
+                    layer = eyesLayer;
+                    currentItem = currentEyes;
+                    break;
+                case 'mouth':
+                    layer = mouthLayer;
+                    currentItem = currentMouth;
+                    break;
+                case 'headwear':
+                    layer = headwearLayer;
+                    currentItem = currentHeadwear;
+                    break;
+                case 'underwear':
+                    layer = underwearLayer;
+                    currentItem = currentUnderwear;
+                    break;
+                case 'top':
+                    layer = topLayer;
+                    currentItem = currentTop;
+                    break;
+                case 'bottom':
+                    layer = bottomLayer;
+                    currentItem = currentBottom;
+                    break;
+                case 'outer':
+                    layer = outerLayer;
+                    currentItem = currentOuter;
+                    break;
+                case 'shoes':
+                    layer = shoesLayer;
+                    currentItem = currentShoes;
+                    break;
+            }
+            
+            if (layer && itemSrc) {
+                // If clicking the same item that's already selected, bring it to front
+                if (currentItem === itemSrc && layer.style.display === 'block') {
+                    bringToFront(layer);
+                    updateThumbnailSelection(category, itemSrc);
+                    return;
+                }
+                
+                // Otherwise, apply the item normally
+                layer.src = itemSrc;
+                layer.style.display = 'block';
+                
+                // Bring to front when applying
+                bringToFront(layer);
+                
+                // Update current item
+                if (category === 'hair') currentHair = itemSrc;
+                if (category === 'bangs') currentBangs = itemSrc;
+                if (category === 'eyes') currentEyes = itemSrc;
+                if (category === 'mouth') currentMouth = itemSrc;
+                if (category === 'headwear') currentHeadwear = itemSrc;
+                if (category === 'underwear') currentUnderwear = itemSrc;
+                if (category === 'top') currentTop = itemSrc;
+                if (category === 'bottom') currentBottom = itemSrc;
+                if (category === 'outer') currentOuter = itemSrc;
+                if (category === 'shoes') currentShoes = itemSrc;
+                
+                // Update thumbnail selection
+                updateThumbnailSelection(category, itemSrc);
+            }
+        }
+        
+        // Function to remove item from layer
+        function removeItem(category, itemSrc) {
+            // Handle multi-select categories
+            if (category === 'piercings') {
+                if (!itemSrc) {
+                    // If no item specified, remove the most recent
+                    if (activePiercings.length === 0) return;
+                    const lastPiercing = activePiercings.pop();
+                    lastPiercing.layer.style.display = 'none';
+                    lastPiercing.layer.src = '';
+                    // Update thumbnail selection
+                    updateMultiSelectThumbnailSelection(category);
+                    return;
+                }
+                
+                // Find and remove the specific item
+                const index = activePiercings.findIndex(p => p.itemSrc === itemSrc);
+                if (index !== -1) {
+                    const piercing = activePiercings[index];
+                    piercing.layer.style.display = 'none';
+                    piercing.layer.src = '';
+                    activePiercings.splice(index, 1);
+                    // Update thumbnail selection
+                    updateMultiSelectThumbnailSelection(category);
+                }
+                return;
+            }
+            
+            if (category === 'accessories') {
+                if (!itemSrc) {
+                    // If no item specified, remove the most recent
+                    if (activeAccessories.length === 0) return;
+                    const lastAccessory = activeAccessories.pop();
+                    lastAccessory.layer.style.display = 'none';
+                    lastAccessory.layer.src = '';
+                    // Update thumbnail selection
+                    updateMultiSelectThumbnailSelection(category);
+                    return;
+                }
+                
+                // Find and remove the specific item
+                const index = activeAccessories.findIndex(a => a.itemSrc === itemSrc);
+                if (index !== -1) {
+                    const accessory = activeAccessories[index];
+                    accessory.layer.style.display = 'none';
+                    accessory.layer.src = '';
+                    activeAccessories.splice(index, 1);
+                    // Update thumbnail selection
+                    updateMultiSelectThumbnailSelection(category);
+                }
+                return;
+            }
+            
+            // Handle single-select categories - only remove if this specific item is active
+            let layer, currentItem;
+            
+            switch(category) {
+                case 'hair':
+                    layer = hairLayer;
+                    currentItem = currentHair;
+                    break;
+                case 'bangs':
+                    layer = bangsLayer;
+                    currentItem = currentBangs;
+                    break;
+                case 'eyes':
+                    layer = eyesLayer;
+                    currentItem = currentEyes;
+                    break;
+                case 'mouth':
+                    layer = mouthLayer;
+                    currentItem = currentMouth;
+                    break;
+                case 'headwear':
+                    layer = headwearLayer;
+                    currentItem = currentHeadwear;
+                    break;
+                case 'underwear':
+                    layer = underwearLayer;
+                    currentItem = currentUnderwear;
+                    break;
+                case 'top':
+                    layer = topLayer;
+                    currentItem = currentTop;
+                    break;
+                case 'bottom':
+                    layer = bottomLayer;
+                    currentItem = currentBottom;
+                    break;
+                case 'outer':
+                    layer = outerLayer;
+                    currentItem = currentOuter;
+                    break;
+                case 'shoes':
+                    layer = shoesLayer;
+                    currentItem = currentShoes;
+                    break;
+            }
+            
+            // Only remove if this specific item is currently active
+            if (layer && currentItem === itemSrc) {
+                layer.style.display = 'none';
+                layer.src = '';
+                
+                // Update current item
+                if (category === 'hair') currentHair = null;
+                if (category === 'bangs') currentBangs = null;
+                if (category === 'eyes') currentEyes = null;
+                if (category === 'mouth') currentMouth = null;
+                if (category === 'headwear') currentHeadwear = null;
+                if (category === 'underwear') currentUnderwear = null;
+                if (category === 'top') currentTop = null;
+                if (category === 'bottom') currentBottom = null;
+                if (category === 'outer') currentOuter = null;
+                if (category === 'shoes') currentShoes = null;
+                
+                // Remove thumbnail selection
+                updateThumbnailSelection(category, null);
+            }
+        }
+        
+        // Add click handlers to thumbnail buttons
+        document.querySelectorAll('.thumbnail-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                // Don't apply item if clicking the remove button
+                if (e.target.classList.contains('thumbnail-remove-btn')) {
+                    return;
+                }
+                const category = btn.getAttribute('data-category');
+                const item = btn.getAttribute('data-item');
+                applyItem(category, item);
+            });
+        });
+        
+        // Add click handlers to remove buttons on thumbnails
+        document.querySelectorAll('.thumbnail-remove-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation(); // Prevent triggering the thumbnail click
+                const thumbnailBtn = btn.closest('.thumbnail-btn');
+                const category = thumbnailBtn.getAttribute('data-category');
+                const item = thumbnailBtn.getAttribute('data-item');
+                removeItem(category, item);
+            });
+        });
+        
+        // Save button functionality
+        const saveBtn = document.getElementById('save-btn');
+        const characterContainer = document.querySelector('.character-container');
+        
+        async function saveCharacter() {
+            try {
+                // Collect all visible layers with their z-index
+                const layers = Array.from(characterContainer.querySelectorAll('.character-layer, .body-layer'))
+                    .filter(layer => layer.style.display !== 'none' && layer.src && layer.complete)
+                    .map(layer => ({
+                        element: layer,
+                        zIndex: parseInt(layer.style.zIndex) || parseInt(window.getComputedStyle(layer).zIndex) || 0
+                    }))
+                    .sort((a, b) => a.zIndex - b.zIndex);
+                
+                if (layers.length === 0) {
+                    alert('No character to save!');
+                    return;
+                }
+                
+                // Find the maximum dimensions from all images
+                let maxWidth = 0;
+                let maxHeight = 0;
+                
+                for (const layer of layers) {
+                    const img = layer.element;
+                    if (img.complete && img.naturalWidth > 0) {
+                        maxWidth = Math.max(maxWidth, img.naturalWidth);
+                        maxHeight = Math.max(maxHeight, img.naturalHeight);
+                    }
+                }
+                
+                if (maxWidth === 0 || maxHeight === 0) {
+                    alert('Images not loaded yet. Please wait a moment and try again.');
+                    return;
+                }
+                
+                // Create canvas with size based on largest image
+                const canvas = document.createElement('canvas');
+                const ctx = canvas.getContext('2d');
+                canvas.width = maxWidth;
+                canvas.height = maxHeight;
+                
+                // Draw all images in order (sorted by z-index)
+                for (const layer of layers) {
+                    const img = layer.element;
+                    if (img.complete && img.naturalWidth > 0) {
+                        // Center the image on the canvas
+                        const x = (canvas.width - img.naturalWidth) / 2;
+                        const y = (canvas.height - img.naturalHeight) / 2;
+                        ctx.drawImage(img, x, y);
+                    }
+                }
+                
+                // Convert to blob and download
+                canvas.toBlob((blob) => {
+                    if (!blob) {
+                        alert('Error creating image. Please try again.');
+                        return;
+                    }
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = `character-${Date.now()}.png`;
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                    URL.revokeObjectURL(url);
+                }, 'image/png');
+            } catch (error) {
+                console.error('Error saving:', error);
+                alert('Error saving character. Please try again.');
+            }
+        }
+        
+        saveBtn.addEventListener('click', saveCharacter);
+        
+        // Reset button functionality
+        const resetBtn = document.getElementById('reset-btn');
+        
+        function resetCharacter() {
+            // Reset all layers
+            hairLayer.style.display = 'none';
+            hairLayer.src = '';
+            bangsLayer.style.display = 'none';
+            bangsLayer.src = '';
+            eyesLayer.style.display = 'none';
+            eyesLayer.src = '';
+            mouthLayer.style.display = 'none';
+            mouthLayer.src = '';
+            headwearLayer.style.display = 'none';
+            headwearLayer.src = '';
+            underwearLayer.style.display = 'none';
+            underwearLayer.src = '';
+            topLayer.style.display = 'none';
+            topLayer.src = '';
+            bottomLayer.style.display = 'none';
+            bottomLayer.src = '';
+            outerLayer.style.display = 'none';
+            outerLayer.src = '';
+            shoesLayer.style.display = 'none';
+            shoesLayer.src = '';
+            
+            // Reset all piercing layers
+            piercingsLayers.forEach(layer => {
+                layer.style.display = 'none';
+                layer.src = '';
+            });
+            
+            // Reset all accessory layers
+            accessoriesLayers.forEach(layer => {
+                layer.style.display = 'none';
+                layer.src = '';
+            });
+            
+            // Reset current items
+            currentHair = null;
+            currentBangs = null;
+            currentEyes = null;
+            currentMouth = null;
+            currentHeadwear = null;
+            currentUnderwear = null;
+            currentTop = null;
+            currentBottom = null;
+            currentOuter = null;
+            currentShoes = null;
+            
+            // Reset active arrays
+            activePiercings = [];
+            activeAccessories = [];
+            
+            // Reset z-index
+            maxZIndex = 20;
+            
+            // Clear all thumbnail selections
+            document.querySelectorAll('.thumbnail-btn').forEach(btn => {
+                btn.classList.remove('selected');
+            });
+        }
+        
+        resetBtn.addEventListener('click', resetCharacter);
+        
+        // Helper function to setup carousel
+        function setupCarousel(carouselId, leftArrowId, rightArrowId) {
+            const carousel = document.getElementById(carouselId);
+            const container = carousel.querySelector('.thumbnail-carousel-container');
+            const thumbnails = Array.from(container.querySelectorAll('.thumbnail-btn'));
+            const leftArrow = document.getElementById(leftArrowId);
+            const rightArrow = document.getElementById(rightArrowId);
+            let currentIndex = 0;
+            const itemsPerView = 4;
+            
+            function updateCarousel() {
+                if (thumbnails.length === 0) return;
+                
+                // Hide all thumbnails and disable their buttons
+                thumbnails.forEach((btn) => {
+                    btn.style.display = 'none';
+                    btn.disabled = true;
+                });
+                
+                // Show and enable only the 4 thumbnails that should be visible
+                const endIndex = Math.min(currentIndex + itemsPerView, thumbnails.length);
+                for (let i = currentIndex; i < endIndex; i++) {
+                    thumbnails[i].style.display = 'flex';
+                    thumbnails[i].disabled = false;
+                }
+                
+                // Update arrow states
+                const isAtStart = (currentIndex === 0);
+                const isAtEnd = (endIndex >= thumbnails.length);
+                
+                leftArrow.disabled = isAtStart;
+                rightArrow.disabled = isAtEnd;
+                
+                // Hide left arrow when at start, show when not (using visibility to maintain layout)
+                if (isAtStart) {
+                    leftArrow.style.visibility = 'hidden';
+                    leftArrow.style.pointerEvents = 'none';
+                } else {
+                    leftArrow.style.visibility = 'visible';
+                    leftArrow.style.pointerEvents = 'auto';
+                    leftArrow.style.opacity = '1';
+                    leftArrow.style.cursor = 'url(\'data/Untitled_Artwork-2 2.png\') 0 0, pointer';
+                }
+                
+                // Hide right arrow when at end, show when not (using visibility to maintain layout)
+                if (isAtEnd) {
+                    rightArrow.style.visibility = 'hidden';
+                    rightArrow.style.pointerEvents = 'none';
+                } else {
+                    rightArrow.style.visibility = 'visible';
+                    rightArrow.style.pointerEvents = 'auto';
+                    rightArrow.style.opacity = '1';
+                    rightArrow.style.cursor = 'url(\'data/Untitled_Artwork-2 2.png\') 0 0, pointer';
+                }
+            }
+            
+            // Initialize on load
+            updateCarousel();
+            
+            leftArrow.addEventListener('click', () => {
+                if (currentIndex > 0) {
+                    currentIndex = Math.max(0, currentIndex - itemsPerView);
+                    updateCarousel();
+                }
+            });
+            
+            rightArrow.addEventListener('click', () => {
+                const maxIndex = Math.max(0, thumbnails.length - itemsPerView);
+                if (currentIndex < maxIndex) {
+                    currentIndex = Math.min(currentIndex + itemsPerView, maxIndex);
+                    updateCarousel();
+                }
+            });
+        }
+        
+        // Setup all carousels
+        setupCarousel('hair-carousel', 'hair-arrow-left', 'hair-arrow-right');
+        setupCarousel('bangs-carousel', 'bangs-arrow-left', 'bangs-arrow-right');
+        setupCarousel('eyes-carousel', 'eyes-arrow-left', 'eyes-arrow-right');
+        setupCarousel('mouth-carousel', 'mouth-arrow-left', 'mouth-arrow-right');
+        setupCarousel('headwear-carousel', 'headwear-arrow-left', 'headwear-arrow-right');
+        setupCarousel('piercings-carousel', 'piercings-arrow-left', 'piercings-arrow-right');
+        setupCarousel('accessories-carousel', 'accessories-arrow-left', 'accessories-arrow-right');
+        setupCarousel('underwear-carousel', 'underwear-arrow-left', 'underwear-arrow-right');
+        setupCarousel('tops-carousel', 'tops-arrow-left', 'tops-arrow-right');
+        setupCarousel('bottoms-carousel', 'bottoms-arrow-left', 'bottoms-arrow-right');
+        setupCarousel('outer-carousel', 'outer-arrow-left', 'outer-arrow-right');
+        setupCarousel('shoes-carousel', 'shoes-arrow-left', 'shoes-arrow-right');
+        
+        // YouTube Audio Player Setup
+        const videoId = 'VvUivvitQas';
+        let youtubePlayer;
+        const scrollingText = document.getElementById('scrolling-text');
+        
+        // Fetch video title
+        async function fetchVideoTitle(videoId) {
+            try {
+                const response = await fetch(`https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=${videoId}&format=json`);
+                const data = await response.json();
+                return data.title;
+            } catch (error) {
+                console.error('Error fetching video title:', error);
+                return 'Unknown Title';
+            }
+        }
+        
+        // Initialize YouTube player when API is ready
+        function onYouTubeIframeAPIReady() {
+            youtubePlayer = new YT.Player('youtube-player-container', {
+                height: '1',
+                width: '1',
+                videoId: videoId,
+                playerVars: {
+                    autoplay: 1,
+                    loop: 1,
+                    playlist: videoId,
+                    controls: 0,
+                    disablekb: 1,
+                    fs: 0,
+                    iv_load_policy: 3,
+                    modestbranding: 1,
+                    playsinline: 1,
+                    rel: 0,
+                    showinfo: 0
+                },
+                events: {
+                    onReady: function(event) {
+                        event.target.setVolume(100);
+                        event.target.playVideo();
+                    },
+                    onStateChange: function(event) {
+                        // Loop the video when it ends
+                        if (event.data === YT.PlayerState.ENDED) {
+                            event.target.playVideo();
+                        }
+                    }
+                }
+            });
+        }
+        
+        // If API is already loaded
+        if (typeof YT !== 'undefined' && YT.Player) {
+            onYouTubeIframeAPIReady();
+        } else {
+            // Wait for API to load
+            window.onYouTubeIframeAPIReady = onYouTubeIframeAPIReady;
+        }
+        
+        // Set scrolling text
+        const text = `welcome to hyoh's dress up game! now playing: customize by xploshi`;
+        scrollingText.textContent = text;
+        const duplicateText = document.getElementById('scrolling-text-duplicate');
+        const triplicateText = document.getElementById('scrolling-text-triplicate');
+        const quadruplicateText = document.getElementById('scrolling-text-quadruplicate');
+        if (duplicateText) {
+            duplicateText.textContent = text;
+        }
+        if (triplicateText) {
+            triplicateText.textContent = text;
+        }
+        if (quadruplicateText) {
+            quadruplicateText.textContent = text;
+        }
+        
+        // Gallery button functionality
+        const galleryBtn = document.getElementById('gallery-btn');
+        galleryBtn.addEventListener('click', () => {
+            // Gallery functionality - can be implemented later
+            alert('Gallery feature coming soon!');
+        });
+    </script>
+</body>
+</html>

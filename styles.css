@@ -8,13 +8,139 @@
 html, body {
     height: 100%;
     overflow: hidden;
+    cursor: url('data/Untitled_Artwork-1 2.png'), auto;
+}
+
+a, button, input:not([disabled]):not([readonly]), textarea:not([disabled]):not([readonly]), select:not([disabled]), .clickable-image, .thumbnail-btn, .image-link, [onclick], [role="button"], [tabindex]:not([tabindex="-1"]) {
+    cursor: url('data/Untitled_Artwork-2 2.png') 0 0, pointer;
 }
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     background-color: #ffffff;
-    cursor: url('./data/Untitled_Artwork-1.png') 0 0, url('data/Untitled_Artwork-1.png') 0 0, auto;
+    position: relative;
 }
+
+.scrolling-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background-color: #ffffff;
+    color: #2563eb;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    z-index: 2000;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.scrolling-text-wrapper {
+    display: flex;
+    white-space: nowrap;
+    animation: scroll-horizontal 15s linear infinite;
+}
+
+.scrolling-text {
+    white-space: nowrap;
+    font-size: 1.2rem;
+    font-weight: 600;
+    padding: 0 2rem;
+    flex-shrink: 0;
+    color: #2563eb;
+}
+
+@keyframes scroll-horizontal {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-25%);
+    }
+}
+
+#youtube-player-container {
+    position: fixed;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+    top: -1000px;
+    left: -1000px;
+    z-index: -1;
+}
+
+.button-container {
+    position: fixed;
+    top: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    z-index: 1000;
+}
+
+.save-button,
+.reset-button,
+.gallery-button {
+    padding: 0.4rem 0.8rem;
+    color: white;
+    border: none;
+    border-radius: 0.4rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    cursor: url('data/Untitled_Artwork-2 2.png') 0 0, pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    width: auto;
+    min-width: 70px;
+}
+
+.gallery-button {
+    background-color: #ff8c00;
+}
+
+.gallery-button:hover {
+    background-color: #e67e00;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.gallery-button:active {
+    transform: translateY(0);
+}
+
+.save-button {
+    background-color: #2563eb;
+}
+
+.save-button:hover {
+    background-color: #1d4ed8;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.save-button:active {
+    transform: translateY(0);
+}
+
+.reset-button {
+    background-color: #ef4444;
+}
+
+.reset-button:hover {
+    background-color: #dc2626;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.reset-button:active {
+    transform: translateY(0);
+}
+
 
 .main-container {
     height: 100vh;
@@ -23,6 +149,9 @@ body {
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    gap: 1.5rem;
+    padding: 1rem;
+    padding-top: 4rem;
 }
 
 .images-container {
@@ -32,25 +161,81 @@ body {
     justify-content: center;
     flex-wrap: wrap;
     padding: 2rem;
+    position: relative;
+}
+
+.base-image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 720px;
+    max-height: 720px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Base image position variables for relative positioning */
+:root {
+    --base-center-x: 50%;
+    --base-center-y: 50%;
 }
 
 .image-link {
     display: block;
-    cursor: url('./data/Untitled_Artwork-2.png') 0 0, url('data/Untitled_Artwork-2.png') 0 0, pointer;
     transition: transform 0.3s ease;
+    position: absolute;
+    z-index: 2;
+    top: var(--base-center-y);
+    left: var(--base-center-x);
+    transform: translate(-50%, -50%) scale(1);
 }
 
-.image-link img {
-    cursor: url('./data/Untitled_Artwork-2.png') 0 0, url('data/Untitled_Artwork-2.png') 0 0, pointer;
+/* Position each clickable image relative to base image center */
+#dress-image {
+    /* Position relative to base - adjust these values to position the dress image */
+    left: calc(var(--base-center-x) - 166px);
+    top: calc(var(--base-center-y) + 52px);
+    transform: translate(-50%, -50%) scale(1.2);
+}
+
+#installation-image {
+    /* Position relative to base - adjust these values to position the installation image */
+    left: calc(var(--base-center-x) + 137px);
+    top: calc(var(--base-center-y) + -88px);
+    transform: translate(-50%, -50%) scale(0.5);
+}
+
+#lore-image {
+    /* Position relative to base - adjust these values to position the lore image */
+    left: calc(var(--base-center-x) + 110px);
+    top: calc(var(--base-center-y) + 181px);
+    transform: translate(-50%, -50%) scale(0.53);
 }
 
 .image-link:hover {
-    transform: scale(1.05);
+    transform: translate(-50%, -50%) scale(1.05);
+}
+
+/* Individual hover states that scale 1.1x from current scale */
+#dress-image:hover {
+    transform: translate(-50%, -50%) scale(1.32); /* 1.2 * 1.1 */
+}
+
+#installation-image:hover {
+    transform: translate(-50%, -50%) scale(0.55); /* 0.5 * 1.1 */
+}
+
+#lore-image:hover {
+    transform: translate(-50%, -50%) scale(0.583); /* 0.53 * 1.1 */
 }
 
 .clickable-image {
-    max-width: 300px;
-    max-height: 300px;
+    max-width: 250px;
+    max-height: 250px;
     width: auto;
     height: auto;
     object-fit: contain;
@@ -71,8 +256,293 @@ body {
 
 @media (max-width: 480px) {
     .clickable-image {
-        max-width: 200px;
-        max-height: 200px;
+        max-width: 250px;
+        max-height: 250px;
     }
+}
+
+/* Dressup Page Styles */
+.character-container {
+    position: relative;
+    width: 600px;
+    height: 900px;
+    order: 2;
+}
+
+.character-layer,
+.body-layer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 600px;
+    max-height: 900px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    user-select: none;
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    pointer-events: none;
+    padding-top: 50px;
+    padding-bottom: 30px;
+    box-sizing: border-box;
+}
+
+.body-layer {
+    z-index: 1;
+}
+
+/* All layers - can be adjusted dynamically */
+#hair-layer {
+    z-index: 2;
+}
+
+#underwear-layer {
+    z-index: 3;
+}
+
+#eyes-layer {
+    z-index: 4;
+}
+
+#mouth-layer {
+    z-index: 5;
+}
+
+#bangs-layer {
+    z-index: 6;
+}
+
+#piercings-layer {
+    z-index: 7;
+}
+
+#top-layer {
+    z-index: 9;
+}
+
+#bottom-layer {
+    z-index: 10;
+}
+
+#shoes-layer {
+    z-index: 11;
+}
+
+#accessories-layer {
+    z-index: 20;
+}
+
+#headwear-layer {
+    z-index: 19;
+}
+
+#outer-layer {
+    z-index: 18;
+}
+
+.clothing-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    max-width: 650px;
+    height: calc(100vh - 50px);
+    overflow: hidden;
+    padding: 20px 0.3rem 50px 0.3rem;
+    box-sizing: border-box;
+}
+
+.clothing-panel-left {
+    order: 1;
+}
+
+.clothing-panel-right {
+    order: 3;
+}
+
+
+.category-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    width: 100%;
+    min-width: 0;
+    flex: 1 1 auto;
+    flex-shrink: 1;
+    justify-content: flex-start;
+    padding-top: 5px;
+    box-sizing: border-box;
+}
+
+.category-title {
+    font-size: 0.7rem;
+    font-weight: 600;
+    margin-bottom: 0.1rem;
+}
+
+.category-controls {
+    display: flex;
+    gap: 0.3rem;
+    align-items: center;
+}
+
+.remove-btn {
+    padding: 0.2rem 0.5rem;
+    background-color: #ff4444;
+    color: white;
+    border: none;
+    border-radius: 0.3rem;
+    font-size: 0.65rem;
+    transition: background-color 0.2s ease;
+}
+
+.remove-btn:hover {
+    background-color: #cc0000;
+}
+
+.remove-btn:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+.thumbnail-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.thumbnail-carousel {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+
+.thumbnail-carousel-container {
+    display: flex;
+    overflow: hidden;
+    width: calc(((100vh - 50px - 20px - 50px - 6 * 5px - 6 * 1.2rem - 6 * 1.8rem) / 6) * 4 + 0.6rem);
+    height: calc((100vh - 50px - 20px - 50px - 6 * 5px - 6 * 1.2rem - 6 * 1.8rem) / 6);
+    position: relative;
+    flex-shrink: 0;
+    gap: 0.2rem;
+    transition: transform 0.3s ease;
+}
+
+.thumbnail-carousel-container .thumbnail-btn {
+    flex-shrink: 0;
+    opacity: 1;
+    pointer-events: auto;
+    position: relative;
+    width: calc((100vh - 50px - 20px - 50px - 6 * 5px - 6 * 1.2rem - 6 * 1.8rem) / 6);
+    min-width: calc((100vh - 50px - 20px - 50px - 6 * 5px - 6 * 1.2rem - 6 * 1.8rem) / 6);
+    height: calc((100vh - 50px - 20px - 50px - 6 * 5px - 6 * 1.2rem - 6 * 1.8rem) / 6);
+    transition: transform 0.3s ease;
+}
+
+.carousel-arrow {
+    width: calc(((100vh - 50px - 20px - 50px - 6 * 5px - 6 * 1.2rem - 6 * 1.8rem) / 6) * 0.35);
+    height: calc(((100vh - 50px - 20px - 50px - 6 * 5px - 6 * 1.2rem - 6 * 1.8rem) / 6) * 0.35);
+    border: 2px solid #ddd;
+    border-radius: 50%;
+    background: white;
+    font-size: calc(((100vh - 50px - 20px - 50px - 6 * 5px - 6 * 1.2rem - 6 * 1.8rem) / 6) * 0.2);
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: url('data/Untitled_Artwork-2 2.png') 0 0, pointer;
+    transition: all 0.2s ease;
+    padding: 0;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 10;
+}
+
+.carousel-arrow:hover {
+    border-color: #6366f1;
+    background-color: #e0e7ff;
+    transform: scale(1.1);
+}
+
+.thumbnail-btn {
+    width: 100%;
+    height: 100%;
+    border: 2px solid #ddd;
+    border-radius: 0.4rem;
+    padding: 0.15rem;
+    background: white;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.thumbnail-btn:hover {
+    border-color: #ff8c00;
+}
+
+.thumbnail-btn.selected {
+    border-color: #ff8c00;
+    border-width: 3px;
+    background-color: #ffe4cc;
+    box-shadow: 0 0 0 2px rgba(255, 140, 0, 0.3);
+}
+
+.thumbnail-btn img {
+    max-width: 100%;
+    max-height: 100%;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    user-select: none;
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    pointer-events: none;
+}
+
+.thumbnail-remove-btn {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #ff4444;
+    color: white;
+    border: 2px solid white;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: url('data/Untitled_Artwork-2 2.png') 0 0, pointer;
+    z-index: 100;
+    padding: 0;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.thumbnail-remove-btn:hover {
+    background-color: #cc0000;
+    transform: scale(1.1);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.thumbnail-btn {
+    position: relative;
 }
 
